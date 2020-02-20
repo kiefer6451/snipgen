@@ -28,6 +28,29 @@ def display_answer(answer):
         print(code)
     print('-----------------------------------------------------------------------')
 
+if response.status_code == 200:
+    answers = response.json()['items']
+    display_answer(answers[0])        
+elif response.status_code == 404:   
+    print('Not found')
+else:
+    print('Failure')
+
+while True:
+    command = input("Command: ")
+    if command == 'j' and index < len(answers) -1:
+        index += 1
+        display_answer(answers[index])
+    elif command == 'k' and index > 0:
+        index -= 1
+        display_answer(answers[index])
+    elif command == 'q':
+        break
+
+
+# listener = keyboard.Listener(on_press=on_press)
+# listener.start()  # start to listen on a separate thread
+# listener.join()  # remove if main thread is polling self.keys    
 
 # def on_press(key):
 #     if key == keyboard.Key.esc:
@@ -45,19 +68,4 @@ def display_answer(answer):
 #             if index > 0:
 #                 index -= 1
 #         display_answer(answers[index])
-
-if response.status_code == 200:
-    answers = response.json()['items']
-    display_answer(answers[0])        
-elif response.status_code == 404:   
-    print('Not found')
-else:
-    print('Failure')
-
-# listener = keyboard.Listener(on_press=on_press)
-# listener.start()  # start to listen on a separate thread
-# listener.join()  # remove if main thread is polling self.keys    
-
-
-
     
