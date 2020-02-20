@@ -6,16 +6,18 @@ if __name__ == "__main__":
     scraper = Scraper()
     query = input('Enter your search: ')
     question_ids = scraper.scrape(query)
-    stack_pull.load(question_id[0])
+    stack_pull.load(question_ids[0])
     index = 0
+    print("the lenght is: {}".format(len(stack_pull.answers)))
+    print(stack_pull.return_answer(index)[2])
     while True:
         command = input("Command: ")
-        if command == 'j' and index < len(stack_pull.answers) -1:
+        if command == 'j' and index < len(stack_pull.answers)-1:
             index += 1
-            stack_pull.return_answer(index)
+            print(stack_pull.return_answer(index)[2])
         elif command == 'k' and index > 0:
             index -= 1
-            stack_pull.return_answer(index)
+            print(stack_pull.return_answer(index)[2])
         elif command == 'q':
             break
         

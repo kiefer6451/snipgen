@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import clipboard
-# from pynput import keyboard
-import keyboard
 
 class StackPull:
     def __init__(self):
@@ -24,11 +22,12 @@ class StackPull:
         answer_body = answer['body']
 
         soup = bs(answer_body, features="html.parser")
-        code = list()
+        code_list = list()
         for i in soup.find_all('pre'):
             code = i.get_text()
             clipboard.copy(code)
-        return answer_id, votes, answer_body, code
+            code_list.append(code)
+        return answer_id, votes, answer_body, code_list
 
 if __name__ == "__main__":
     s = StackPull()
