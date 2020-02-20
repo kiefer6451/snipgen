@@ -1,5 +1,6 @@
-from stackpull import StackPull
-from scraper import Scraper
+# from stackpull import StackPull
+# from scraper import Scraper
+from getch import _Getch
 
 if __name__ == "__main__":
     stack_pull = StackPull()
@@ -11,34 +12,21 @@ if __name__ == "__main__":
     print("the lenght is: {}".format(len(stack_pull.answers)))
     print(stack_pull.return_answer(index)[2])
     while True:
-        command = input("Command: ")
-        if command == 'j' and index < len(stack_pull.answers)-1:
+        getch = _Getch()
+        key_code = ord(getch())
+        if key_code == 106 and index < len(stack_pull.answers) - 1: #j
             index += 1
             print(stack_pull.return_answer(index)[2])
-        elif command == 'k' and index > 0:
+        elif key_code == 107 and index > 0: #k
             index -= 1
             print(stack_pull.return_answer(index)[2])
-        elif command == 'q':
-            break
+        elif key_code == 104: #h
         
-# listener = keyboard.Listener(on_press=on_press)
-# listener.start()  # start to listen on a separate thread
-# listener.join()  # remove if main thread is polling self.keys    
-
-# def on_press(key):
-#     if key == keyboard.Key.esc:
-#         return False  # stop listener
-#     try:
-#         k = key.char  # single-char keys
-#     except:
-#         k = key.name  # other keys
-#     if k in ['j', 'k']:  # keys of interest
-#         print('Key pressed: ' + k)
-#         if k == 'j':
-#             if index < len(answers):
-#                 index += 1
-#         elif k == 'k':
-#             if index > 0:
-#                 index -= 1
-#         display_answer(answers[index])
+        elif key_code == 108: #l
+        
+        elif key_code == 113: #q
+            break
+        if command == 'j' :
+            
+            
     
