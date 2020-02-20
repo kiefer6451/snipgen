@@ -6,17 +6,19 @@ class StackPull:
     def __init__(self):
         pass
 
-    def load(self, question_id):
-        response = requests.get('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=withbody')
-        if response.status_code == 200:
-            self.answers = response.json()['items']
-        elif response.status_code == 404:   
-            print('Not found')
-        else:
-            print('Failure')
+    def load(self, question_ids):
+        self.answers = list()
+        for question_id in question_ids[:3]:
+            response = requests.get('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=withbody')
+            if response.status_code == 200:
+                self.answers.append(response.json()['items'])
+            elif response.status_code == 404:   
+                print('Not found')
+            else:
+                print('Failure')
     
-    def return_answer(self, index):
-        answer = self.answers[index]
+    def return_answer(self, qIndex, aIndex):
+        answer = self.answers[qIndex][aIndex]
         answer_id = answer['answer_id']
         votes = answer['score']
         answer_body = answer['body']
@@ -31,5 +33,5 @@ class StackPull:
 
 if __name__ == "__main__":
     s = StackPull()
-    s.load(40636607)
-    print(s.return_answer(0))
+    s.load([40636607, 40636607])
+    print(s.return_answer(0, 1))
