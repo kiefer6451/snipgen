@@ -12,7 +12,7 @@ class StackPull:
     def load(self, question_ids):
         self.answers = list()
         for question_id in question_ids[:3]:
-            response = requests.get('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=withbody')
+            response = requests.get('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=!-*jbN.OXKfDP')
             if response.status_code == 200:
                 self.answers.append(response.json()['items'])
             elif response.status_code == 404:   
