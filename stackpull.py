@@ -33,9 +33,9 @@ class StackPull:
         for line in soup.find_all(True): 
             if line.tag == 'code':
                 code += line.get_text()
-                output += Fore.YELLOW + Style.BRIGHT + line.get_text()
+                output += Fore.YELLOW + Style.BRIGHT + line.get_text() + Style.RESET_ALL
             else:
-                output += Fore.WHITE + Style.BRIGHT + line.get_text()
+                output += Fore.WHITE + Style.BRIGHT + line.get_text() + Style.RESET_ALL
         clipboard.copy(code)
         return output        
 
