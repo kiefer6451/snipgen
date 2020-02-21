@@ -5,6 +5,9 @@ import os
 import colorama
 from colorama import Fore, Style
 
+from selenium import webdriver
+browser = webdriver.Firefox()
+
 def printSpacer(qIndex, title, aIndex):
     os.system('cls' if os.name == 'nt' else 'clear')
     print("------------------------------------------------------------------------------------------")
@@ -20,7 +23,7 @@ if __name__ == "__main__":
     qIndex = 0
     aIndex = 0
     printSpacer(qIndex, "Food", aIndex)
-    print(stack_pull.return_answer(qIndex, aIndex)[2])
+    print(stack_pull.return_answer(qIndex, aIndex))
     while True:
         getch = _Getch()
         key_code = ord(getch())
@@ -28,14 +31,16 @@ if __name__ == "__main__":
             if aIndex < len(stack_pull.answers[qIndex]) - 1: #j
                 aIndex += 1
                 printSpacer(qIndex, "foo", aIndex)
-                print(stack_pull.return_answer(qIndex, aIndex)[2])
+                # print(stack_pull.return_answer(qIndex, aIndex)[2])
+                # response = stack_pull.return_answer(qIndex, aIndex)[2]
+                print(stack_pull.return_answer(qIndex, aIndex))
             else:
                 print("Already at last answer for this question.")
         elif key_code == 107:
             if aIndex > 0: #k
                 aIndex -= 1
                 printSpacer(qIndex, "foo", aIndex)
-                print(stack_pull.return_answer(qIndex, aIndex)[2])
+                print(stack_pull.return_answer(qIndex, aIndex))
             else:
                 print("Already at first answer for this question.")
         elif key_code == 104:
@@ -43,7 +48,7 @@ if __name__ == "__main__":
                 qIndex -= 1
                 aIndex = 0
                 printSpacer(qIndex, "foo", aIndex)
-                print(stack_pull.return_answer(qIndex, aIndex)[2])
+                print(stack_pull.return_answer(qIndex, aIndex))
             else:
                 print("Already at first question.")
         elif key_code == 108:
@@ -51,8 +56,12 @@ if __name__ == "__main__":
                 qIndex += 1
                 aIndex = 0
                 printSpacer(qIndex, "foo", aIndex)
-                print(stack_pull.return_answer(qIndex, aIndex)[2])
+                print(stack_pull.return_answer(qIndex, aIndex))
             else:
                 print("Already at last question.")
+        elif key_code == 119: #w
+            query = input('Enter your search: ')
+            question_ids = scraper.scrape(query)
+            stack_pull.load(question_ids)
         elif key_code == 113: #q
             break

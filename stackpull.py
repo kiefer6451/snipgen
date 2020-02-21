@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup as bs
 import clipboard
 
+import colorama
+from colorama import Fore, Style
+
 class StackPull:
     def __init__(self):
         pass
@@ -24,12 +27,17 @@ class StackPull:
         answer_body = answer['body']
 
         soup = bs(answer_body, features="html.parser")
-        code_list = list()
-        for i in soup.find_all('pre'):
-            code = i.get_text()
-            clipboard.copy(code)
-            code_list.append(code)
-        return answer_id, votes, answer_body, code_list
+        output = ''
+        code = ''
+
+        for line in soup.find_all(True): 
+            if line.tag == 'code':
+                code += line.get_text()
+                output += Fore.YELLOW + Style.BRIGHT + line.get_text()
+            else:
+                output += Fore.WHITE + Style.BRIGHT + line.get_text()
+        clipboard.copy(code)
+        return output        
 
 if __name__ == "__main__":
     s = StackPull()
