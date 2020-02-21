@@ -20,7 +20,7 @@ class Scraper:
             for item in indices:
                 item2 = html[item+28:item+100].partition("/")[0]
                 final.append(int(item2))
-            return final
+            return list(dict.fromkeys(final))
         except Exception as e:
             print(e)
             return None
