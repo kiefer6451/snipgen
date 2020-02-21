@@ -25,19 +25,20 @@ class StackPull:
         answer_id = answer['answer_id']
         votes = answer['score']
         answer_body = answer['body']
+        title = answer['title']
 
         soup = bs(answer_body, features="html.parser")
         output = ''
         code = ''
 
         for line in soup.find_all(True): 
-            if line.tag == 'code':
+            if line.name == 'code':
                 code += line.get_text()
                 output += Fore.YELLOW + Style.BRIGHT + line.get_text() + Style.RESET_ALL
             else:
                 output += Fore.WHITE + Style.BRIGHT + line.get_text() + Style.RESET_ALL
         clipboard.copy(code)
-        return output        
+        return [title, output]        
 
 if __name__ == "__main__":
     s = StackPull()
