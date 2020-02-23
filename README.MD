@@ -13,23 +13,29 @@ Start by running
 python3 client.py  
 ```  
 
-SnipGen uses vim/vi keybinding to make things easy to use.  
+SnipGen uses vim/vi keybinding to make things easy to use during your search.  
 
 ```
 j - go to next anwer (down)
 k - go to previous answer (up)
 l - got to next question (right)
 h - go to previous question (left)
-w - next query
+n - next query
 q - quit
 ```
 That's it.  
 
 ## Install  
 
-Tested in GNU/Linux and Windows 10.
-
+-install Python3 and pip3
+-Tested in GNU/Linux and Windows 10.
 -install Firefox selenium gecko driver
--```
+    -for Ubuntu 18.04 - https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu
+-install dependencies
+```
 pip3 install -r requirements.txt
 ```
+
+### Todo
+
+-make webdriver open in the background (PhantomJs, chrome on background mode)

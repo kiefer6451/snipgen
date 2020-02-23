@@ -4,10 +4,13 @@ import re
 
 class Scraper:
     def __init__(self):
+        self.driver = None
+
+    def setup(self):
         driver = webdriver.Firefox(timeout=20)
         driver.set_page_load_timeout(9)
         self.driver = driver
-    
+
     def scrape(self, query):
         search = "https://www.google.com/search?q=site:stackoverflow.com+{}".format(query.replace(" ", "+"))
         
@@ -25,8 +28,13 @@ class Scraper:
             print(e)
             return None
 
+    def die(self):
+        if self.driver is not None:
+            self.driver.close()
+
 def main():
     scraper = Scraper()
+    scraper.setup()
     while True:
         q = input("Enter query: ")
         result = scraper.scrape(q)

@@ -26,21 +26,30 @@ class StackPull:
         votes = answer['score']
         answer_body = answer['body']
         title = answer['title']
-
+        print(answer_body)
         soup = bs(answer_body, features="html.parser")
         output = ''
         code = ''
 
         for line in soup.find_all(True): 
-            if line.name == 'code':
+            print("TEST: {}".format(line))
+            if line.name == 'pre':
+                pass
+            elif line.name == 'code':
+                print("pre: {}".format(line))
+                output += "\n"
+                code += "\n"
                 code += line.get_text()
                 output += Fore.YELLOW + Style.BRIGHT + line.get_text() + Style.RESET_ALL
-            else:
+                output += "\n"
+                check = True
+            elif line.name == 'p' or line.name == 'li':
                 output += Fore.WHITE + Style.BRIGHT + line.get_text() + Style.RESET_ALL
+        
         clipboard.copy(code)
         return [title, output]        
 
 if __name__ == "__main__":
     s = StackPull()
-    s.load([40636607, 40636607])
-    print(s.return_answer(0, 1))
+    res = s.load([40636607, 40636607])
+    print(s.return_answer(1, 1))
