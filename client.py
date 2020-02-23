@@ -6,7 +6,7 @@ import colorama
 from colorama import Fore, Style
 
 from selenium import webdriver
-browser = webdriver.Firefox()
+#browser = webdriver.Firefox() #caused bug where multple selenium windows were opening. Was this for Windows or something... idk why this was here... no Windows machine to test it
 
 def printSpacer(qIndex, title, aIndex):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -17,12 +17,11 @@ def printSpacer(qIndex, title, aIndex):
 if __name__ == "__main__":
     stack_pull = StackPull()
     scraper = Scraper()
+    scraper.setup() #opens selenium
     query = input('Enter your search: ')
     #try:
     question_ids = scraper.scrape(query)
-    print(question_ids)
     stack_pull.load(question_ids)
-    print(stack_pull.answers)
     qIndex = 0
     aIndex = 0
     resp = stack_pull.return_answer(qIndex, aIndex)
@@ -30,6 +29,7 @@ if __name__ == "__main__":
     print(resp[1])
     while True:
         getch = _Getch()
+
         key_code = ord(getch())
         if key_code == 106: 
             if aIndex < len(stack_pull.answers[qIndex]) - 1: #j
@@ -65,7 +65,7 @@ if __name__ == "__main__":
                 print(response[1])
             else:
                 print("Already at last question.")
-        elif key_code == 119: #w
+        elif key_code == 119 or key_code ==110 : #w or n
             aIndex = 0
             qIndex = 0
             query = input('Enter your search: ')
@@ -75,6 +75,7 @@ if __name__ == "__main__":
             printSpacer(qIndex, response[0], aIndex)
             print(response[1])
         elif key_code == 113: #q
+            scraper.die()
             break
     #except Exception as e:
     #    print('Max requests exceeded')
