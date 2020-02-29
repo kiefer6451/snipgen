@@ -1,4 +1,4 @@
-# SnipGen: Automatic Stack Overflow search for code snippets
+# SnipGen: automated code snippet generation and automatic clipboarding in the terminal
 
 We built this app to enhance programming workflow by increasing coder bandwidth. Every programmer we know switches from editor/IDE to browser and searches for answer to technical questions 100's of times a day. This is a bottleneck in our workflow. We created this app to make that task seamlessly integrate into your coding workflow.  
 
@@ -36,6 +36,25 @@ That's it.
 pip3 install -r requirements.txt
 ```
 
-### Todo
+## Creators / Authours
 
--make webdriver open in the background (PhantomJs, chrome on background mode)
+Created by Cayden Pierce and Eric Kiefer
+
+<sup><sub>
+    SnipGen, automated code snippet generation and automatic clipboarding in the terminal
+    Copyright (C) 2020 Cayden Pierce 
+    Copyright (C) 2020 Eric Kiefer
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+</sup></sub>

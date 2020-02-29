@@ -11,7 +11,9 @@ class StackPull:
 
     def load(self, question_ids):
         self.answers = list()
-        for question_id in question_ids[:3]:
+        for question_id in question_ids[:(min(3, len(question_ids)))]:
+            #print("STACK DEBUG: {}".format(question_id))
+            #print('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=!-*jbN.OXKfDP')
             response = requests.get('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=!-*jbN.OXKfDP')
             if response.status_code == 200:
                 self.answers.append(response.json()['items'])
@@ -19,6 +21,10 @@ class StackPull:
                 print('Not found')
             else:
                 print('Failure')
+        if len(self.answers) == 0:
+            return False
+        else:
+            return True
     
     def return_answer(self, qIndex, aIndex):
         answer = self.answers[qIndex][aIndex]
@@ -26,17 +32,17 @@ class StackPull:
         votes = answer['score']
         answer_body = answer['body']
         title = answer['title']
-        print(answer_body)
+        #print(answer_body)
         soup = bs(answer_body, features="html.parser")
         output = ''
         code = ''
 
         for line in soup.find_all(True): 
-            print("TEST: {}".format(line))
+            #print("TEST: {}".format(line))
             if line.name == 'pre':
                 pass
             elif line.name == 'code':
-                print("pre: {}".format(line))
+                #print("pre: {}".format(line))
                 output += "\n"
                 code += "\n"
                 code += line.get_text()
