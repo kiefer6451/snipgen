@@ -10,7 +10,7 @@ The app provides a portal to quickly search Stack Overflow for natural language 
 
 Start by running
 ```
-python3 client.py  
+python3 main.py  
 ```  
 
 SnipGen uses vim/vi keybinding to make things easy to use during your search.  
@@ -30,11 +30,12 @@ That's it.
 
 ## Install  
 
+### Tested in GNU/Linux (Ubuntu 18.04 LTS) and Windows 10.  
+
 -install Python3 and pip3  
--Tested in GNU/Linux and Windows 10.  
 -install Firefox selenium gecko driver  
     -for Ubuntu 18.04 - https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu  
--install dependencies  
+-install dependencies:  
 ```
 pip3 install -r requirements.txt
 ```  
@@ -45,9 +46,9 @@ Created by Cayden Pierce and Eric Kiefer
 
 ## License 
 
-SnipGen, automated code snippet generation and automatic clipboarding in the terminal
-Copyright (C) 2020 Cayden Pierce 
-Copyright (C) 2020 Eric Kiefer
+SnipGen, automated code snippet generation and automatic clipboarding in the terminal  
+Copyright (C) 2020 Cayden Pierce   
+Copyright (C) 2020 Eric Kiefer    
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
