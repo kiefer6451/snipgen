@@ -42,7 +42,7 @@ if __name__ == "__main__":
     scraper = Scraper()
     scraper.setup() #opens selenium
    
-    begin = True #auto run 'n' if we are just starting up
+    begin = True #auto run '/' if we are just starting up
     snippet = -1
     while True: #mainprogram
         if begin == False:
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             key_code = ord(getch())
         else: key_code = 0
         
-        if ((key_code == 110) or (begin == True)): #n, next query
+        if ((key_code == 110) or (key_code == 47) or (begin == True)): #/, new search ('n' for legacy support)
             if begin == True: begin = False
             
             aIndex = 0
@@ -100,6 +100,6 @@ if __name__ == "__main__":
         elif key_code == 119: #if w, scroll through code snippet
             snippet += 1
             display(stack_pull, qIndex, aIndex, snippet)
-        elif key_code == 113: #q, for quit
+        elif key_code == 113 or key_code == 3: #q or Ctrl-C for quit
             scraper.die()
             break

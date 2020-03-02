@@ -16,13 +16,13 @@ python3 main.py
 SnipGen uses vim/vi keybinding to make things easy to use during your search.  
 
 ```
-j - go to next anwer (down)
-k - go to previous answer (up)
-l - got to next question (right)
-h - go to previous question (left)
-n - next query
-w - toggle ***
-q - quit
+'j' - go to next anwer (down)
+'k' - go to previous answer (up)
+'l' - got to next question (right)
+'h' - go to previous question (left)
+'/' - next search
+'w' - toggle ***
+'q' - quit
 ```  
 That's it.  
 
