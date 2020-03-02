@@ -1,7 +1,5 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import clipboard
-
 import colorama
 from colorama import Fore, Style
 
@@ -34,26 +32,23 @@ class StackPull:
         title = answer['title']
         #print(answer_body)
         soup = bs(answer_body, features="html.parser")
-        output = ''
-        code = ''
+        allCode = ''
+        codeList = list()
+        ans = list()
 
         for line in soup.find_all(True): 
-            #print("TEST: {}".format(line))
-            if line.name == 'pre':
+            if line.name == 'pre': #pre code, don't want this, just want the code
                 pass
             elif line.name == 'code':
-                #print("pre: {}".format(line))
-                output += "\n"
-                code += "\n"
-                code += line.get_text()
-                output += Fore.YELLOW + Style.BRIGHT + line.get_text() + Style.RESET_ALL
-                output += "\n"
+                allCode += "\n"
+                allCode += line.get_text()
+                codeList.append(line.get_text())
+                ans.append(["code", line.get_text()])
                 check = True
-            elif line.name == 'p' or line.name == 'li':
-                output += Fore.WHITE + Style.BRIGHT + line.get_text() + Style.RESET_ALL
+            elif line.name == 'p' or line.name == 'li': #actual writing/text that we want
+                ans.append(["text", line.get_text()])
         
-        clipboard.copy(code)
-        return [title, output]        
+        return title, allCode, codeList, ans
 
 if __name__ == "__main__":
     s = StackPull()

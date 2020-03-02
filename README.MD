@@ -21,40 +21,43 @@ k - go to previous answer (up)
 l - got to next question (right)
 h - go to previous question (left)
 n - next query
+w - toggle ***
 q - quit
-```
+```  
 That's it.  
+
+*** toggling slides the clipboard through the code options, so you clipboard the code snippet you want
 
 ## Install  
 
--install Python3 and pip3
--Tested in GNU/Linux and Windows 10.
--install Firefox selenium gecko driver
-    -for Ubuntu 18.04 - https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu
--install dependencies
+-install Python3 and pip3  
+-Tested in GNU/Linux and Windows 10.  
+-install Firefox selenium gecko driver  
+    -for Ubuntu 18.04 - https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu  
+-install dependencies  
 ```
 pip3 install -r requirements.txt
-```
+```  
 
 ## Creators / Authours
 
 Created by Cayden Pierce and Eric Kiefer
 
-<sup><sub>
-    SnipGen, automated code snippet generation and automatic clipboarding in the terminal
-    Copyright (C) 2020 Cayden Pierce 
-    Copyright (C) 2020 Eric Kiefer
+## License 
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+SnipGen, automated code snippet generation and automatic clipboarding in the terminal
+Copyright (C) 2020 Cayden Pierce 
+Copyright (C) 2020 Eric Kiefer
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-</sup></sub>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
