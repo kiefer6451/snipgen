@@ -1,5 +1,6 @@
 from time import sleep
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 import re
 
 class Scraper:
@@ -7,7 +8,9 @@ class Scraper:
         self.driver = None
 
     def setup(self):
-        driver = webdriver.Firefox(timeout=20)
+        options = Options()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
         driver.set_page_load_timeout(9)
         self.driver = driver
 
@@ -21,8 +24,10 @@ class Scraper:
             indices = [m.start(0) for m in res]
             final = list()
             for item in indices:
-                item2 = html[item+28:item+100].partition("/")[0]
+                item2 = html[item+28:item+100].partition("/")[0].partition("\"")[0]
+                #print(item2)
                 final.append(int(item2))
+            #print("DEBUG: the responses are {}".format(final))
             return list(dict.fromkeys(final))
         except Exception as e:
             print(e)
