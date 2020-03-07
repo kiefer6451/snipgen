@@ -1,6 +1,6 @@
 # SnipGen: Automatic Stack Overflow search for code snippets
 
-We built this app to enhance programming workflow by increasing coder bandwidth. Every programmer we know switches from editor/IDE to browser and searches for answer to technical questions 100's of times a day. This is a bottleneck in our workflow. We created this app to make that task seamlessly integrate into your coding workflow.  
+We built this app to enhance programming workflow by increasing coder bandwidth. Every programmer we know switches from editor/IDE to browser and searches for answers to technical questions many times every day. This is a bottleneck in our workflow. We created this app to make that task seamlessly integrate into your coding workflow.  
 
 ## How It Works  
 
