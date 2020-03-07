@@ -1,4 +1,4 @@
-# SnipGen: Automatic Stack Overflow search for code snippets
+# SnipGen: automated code snippet generation and automatic clipboarding in the terminal
 
 We built this app to enhance programming workflow by increasing coder bandwidth. Every programmer we know switches from editor/IDE to browser and searches for answers to technical questions many times every day. This is a bottleneck in our workflow. We created this app to make that task seamlessly integrate into your coding workflow.  
 
@@ -10,32 +10,55 @@ The app provides a portal to quickly search Stack Overflow for natural language 
 
 Start by running
 ```
-python3 client.py  
+python3 main.py  
 ```  
 
 SnipGen uses vim/vi keybinding to make things easy to use during your search.  
 
 ```
-j - go to next anwer (down)
-k - go to previous answer (up)
-l - got to next question (right)
-h - go to previous question (left)
-n - next query
-q - quit
-```
+'j' - go to next anwer (down)
+'k' - go to previous answer (up)
+'l' - got to next question (right)
+'h' - go to previous question (left)
+'/' - next search
+'w' - toggle ***
+'q' - quit
+```  
 That's it.  
+
+*** toggling slides the clipboard through the code options, so you clipboard the code snippet you want
 
 ## Install  
 
--install Python3 and pip3
--Tested in GNU/Linux and Windows 10.
--install Firefox selenium gecko driver
-    -for Ubuntu 18.04 - https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu
--install dependencies
+### Tested in GNU/Linux (Ubuntu 18.04 LTS) and Windows 10.  
+
+-install Python3 and pip3  
+-install Firefox selenium gecko driver  
+    -for Ubuntu 18.04 - https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu  
+-install dependencies:  
 ```
 pip3 install -r requirements.txt
-```
+```  
 
-### Todo
+## Creators / Authours
 
--make webdriver open in the background (PhantomJs, chrome on background mode)
+Created by Cayden Pierce and Eric Kiefer
+
+## License 
+
+SnipGen, automated code snippet generation and automatic clipboarding in the terminal  
+Copyright (C) 2020 Cayden Pierce   
+Copyright (C) 2020 Eric Kiefer    
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.

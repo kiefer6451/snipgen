@@ -1,7 +1,5 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import clipboard
-
 import colorama
 from colorama import Fore, Style
 
@@ -11,7 +9,9 @@ class StackPull:
 
     def load(self, question_ids):
         self.answers = list()
-        for question_id in question_ids[:3]:
+        for question_id in question_ids[:(min(3, len(question_ids)))]:
+            #print("STACK DEBUG: {}".format(question_id))
+            #print('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=!-*jbN.OXKfDP')
             response = requests.get('https://api.stackexchange.com/2.2/questions/' + str(question_id) + '/answers?order=desc&sort=votes&site=stackoverflow&filter=!-*jbN.OXKfDP')
             if response.status_code == 200:
                 self.answers.append(response.json()['items'])
@@ -19,6 +19,10 @@ class StackPull:
                 print('Not found')
             else:
                 print('Failure')
+        if len(self.answers) == 0:
+            return False
+        else:
+            return True
     
     def return_answer(self, qIndex, aIndex):
         answer = self.answers[qIndex][aIndex]
@@ -26,28 +30,25 @@ class StackPull:
         votes = answer['score']
         answer_body = answer['body']
         title = answer['title']
-        print(answer_body)
+        #print(answer_body)
         soup = bs(answer_body, features="html.parser")
-        output = ''
-        code = ''
+        allCode = ''
+        codeList = list()
+        ans = list()
 
         for line in soup.find_all(True): 
-            print("TEST: {}".format(line))
-            if line.name == 'pre':
+            if line.name == 'pre': #pre code, don't want this, just want the code
                 pass
             elif line.name == 'code':
-                print("pre: {}".format(line))
-                output += "\n"
-                code += "\n"
-                code += line.get_text()
-                output += Fore.YELLOW + Style.BRIGHT + line.get_text() + Style.RESET_ALL
-                output += "\n"
+                allCode += "\n"
+                allCode += line.get_text()
+                codeList.append(line.get_text())
+                ans.append(["code", line.get_text()])
                 check = True
-            elif line.name == 'p' or line.name == 'li':
-                output += Fore.WHITE + Style.BRIGHT + line.get_text() + Style.RESET_ALL
+            elif line.name == 'p' or line.name == 'li': #actual writing/text that we want
+                ans.append(["text", line.get_text()])
         
-        clipboard.copy(code)
-        return [title, output]        
+        return title, allCode, codeList, ans
 
 if __name__ == "__main__":
     s = StackPull()
